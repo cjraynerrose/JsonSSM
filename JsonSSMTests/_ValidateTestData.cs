@@ -16,7 +16,6 @@ namespace JsonSSMTests
 
         [TestCase("create_test_input")]
         [TestCase("delete_test_input")]
-        [TestCase("read_test_input")]
 
         public void ValidateJsonInAllFiles(string directory)
         {

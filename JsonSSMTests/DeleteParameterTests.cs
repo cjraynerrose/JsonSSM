@@ -41,15 +41,15 @@ namespace JsonSSMTests
             JToken json = FileLoader.Get(path);
             DataList datalist = JsonFlattener.Flatten(json);
 
-            DeleteClient deleteClient = new DeleteClient(datalist);
+            DeleteCommand deleteClient = new DeleteCommand(datalist);
 
             Assert.IsNull(deleteClient.GetResults());
 
-            await deleteClient.Delete();
-            ResultContainer result = deleteClient.GetResults();
+            await deleteClient.SendRequest();
+            var result = deleteClient.GetResults();
 
             Assert.AreEqual(ResultType.Success, result.Type);
-            Assert.IsTrue(result.Results.All(result => ((DeleteResult)result).Response.InvalidParameters.Count == 0));
+            Assert.IsTrue(result.Results.All(result => result.Response.InvalidParameters.Count == 0));
         }
     }
 }

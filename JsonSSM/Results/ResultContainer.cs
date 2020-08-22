@@ -2,12 +2,12 @@
 
 namespace JsonSSM.Results
 {
-    public class ResultContainer
+    public class ResultContainer<TResult> where TResult : Result
     {
-        public Result[] Results { get; }
+        public TResult[] Results { get; }
         public ResultType Type { get; }
 
-        public ResultContainer(params Result[] results)
+        public ResultContainer(params TResult[] results)
         {
             Results = results;
             Type = ResolveType();

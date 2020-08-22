@@ -35,7 +35,7 @@ namespace JsonSSMTests
             };
 
             var deletionClients = files.Select(f =>
-                new DeleteClient(
+                new DeleteCommand(
                     JsonFlattener.Flatten(
                         FileLoader.Get(f)
                         )
@@ -45,7 +45,7 @@ namespace JsonSSMTests
 
             foreach (var client in deletionClients)
             {
-                await client.Delete();
+                await client.SendRequest();
             }
         }
 
@@ -129,11 +129,11 @@ namespace JsonSSMTests
         public async Task UploadToS3Test(string path)
         {
             DataList dataList = GetDataFromFile(path);
-            var uploadClient = new PutClient(dataList);
+            var uploadClient = new PutCommand(dataList);
 
             Assert.IsNull(uploadClient.GetResults());
 
-            await uploadClient.Upload();
+            await uploadClient.SendRequest();
             var result = uploadClient.GetResults();
 
             Assert.AreEqual(ResultType.Success, result.Type);
@@ -145,7 +145,7 @@ namespace JsonSSMTests
         public async Task UploadServiceTest(string path)
         {
             var uploadService = new UploadJsonService();
-            ResultContainer result = await uploadService.Upload(path);
+            var result = await uploadService.Upload(path);
 
             Assert.AreEqual(ResultType.Success, result.Type);
         }

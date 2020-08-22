@@ -1,28 +1,21 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
-using Amazon.SimpleSystemsManagement;
 using Amazon.SimpleSystemsManagement.Model;
 using JsonSSM.Models;
 using JsonSSM.Results;
 
 namespace JsonSSM.Parameters.Delete
 {
-    public class DeleteClient
+    public class DeleteCommand : ParameterCommand<DeleteResult>
     {
         private static readonly int MaxPerRequest = 10;
-        private DataList DataList { get; }
-        private AmazonSimpleSystemsManagementClient SSMClient { get; set; }
-        private ResultContainer Result { get; set; }
 
-        public DeleteClient(DataList datalist)
+        public DeleteCommand(DataList datalist)
+            : base(datalist)
         {
-            DataList = datalist;
-            SSMClient = new AmazonSimpleSystemsManagementClient(datalist.Meta.Region);
         }
 
-        public ResultContainer GetResults() => Result ?? null;
-
-        public async Task Delete()
+        public override async Task SendRequest()
         {
             var requests = DeleteParameterRequests();
             var responses = await SendParameterRequests(requests);
@@ -72,7 +65,7 @@ namespace JsonSSM.Parameters.Delete
                 .Select(r => new DeleteResult(r))
                 .ToArray();
 
-            Result = new ResultContainer(result);
+            Results = new ResultContainer<DeleteResult>(result);
         }
     }
 }
