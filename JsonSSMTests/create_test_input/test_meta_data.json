@@ -1,0 +1,28 @@
+{
+  "META": {
+    "Encrypt": [
+      "String",
+      "StringList"
+    ],
+    "Region": "eu-west-1"
+  },
+  "DATA": {
+    "String": "value",
+    "StringList": [
+      "value1",
+      "value2",
+      "value3"
+    ],
+    "ObjectList": [
+      {
+        "Id": "Object 1"
+      },
+      {
+        "Id": "Object 2"
+      },
+      {
+        "Id": "Object 3"
+      }
+    ]
+  }
+}

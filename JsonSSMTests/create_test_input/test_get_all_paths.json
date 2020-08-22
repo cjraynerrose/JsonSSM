@@ -1,0 +1,10 @@
+{
+  "RootString": "value1",
+  "Path": {
+    "SubPath": {
+      "String": "Some Kind Of Value",
+      "Int": 42,
+      "Bool": true
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "META": {
+    "Encrypt": [
+      "/Encrypted",
+      "/EncryptedList/Enc",
+      "/OtherList/"
+    ],
+    "Region": "eu-west-2"
+  },
+  "DATA": {
+    "Encrypted": "SecureData",
+    "EncryptedList": {
+      "Enc": "Sensitive",
+      "Plain": "Password1234"
+    },
+    "OtherList": {
+      "a": 1,
+      "b": 2
+    },
+    "PlainStringList": [
+      "not-sensitive",
+      "just users passwords",
+      "nothing to see here"
+    ]
+  }
+}
