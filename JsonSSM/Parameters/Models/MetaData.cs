@@ -5,7 +5,7 @@ using Amazon;
 
 using Newtonsoft.Json;
 
-namespace JsonSSM.Models.Data
+namespace JsonSSM.Models
 {
     public class MetaData
     {
@@ -15,8 +15,12 @@ namespace JsonSSM.Models.Data
         [JsonConstructor]
         public MetaData(string[] encrypt, string region)
         {
-            Encrypt = EnsureFormatting(encrypt);
             Region = ResolveRegion(region);
+
+            if (encrypt != null)
+            {
+                Encrypt = EnsureFormatting(encrypt);
+            }
         }
 
         private string[] EnsureFormatting(string[] strings)
@@ -55,6 +59,11 @@ namespace JsonSSM.Models.Data
 
         internal bool ShouldEncrypt(string prefix)
         {
+            if (Encrypt == null || Encrypt.Length == 0)
+            {
+                return false;
+            }
+
             prefix = EnsureFormatting(prefix);
             return Encrypt.Any(e =>
             {

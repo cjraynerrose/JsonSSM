@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Amazon.Runtime.Internal;
-using JsonSSM.Clients;
-using JsonSSM.Files;
-using JsonSSM.Mappers;
-using JsonSSM.Models.Results;
+﻿using System.Threading.Tasks;
+using JsonSSM.Parameters.Put;
+using JsonSSM.Results;
 
 namespace JsonSSM
 {
@@ -20,7 +14,7 @@ namespace JsonSSM
             JsonFlattener jf = new JsonFlattener();
             var dataList = jf.Flatten(json);
 
-            ParameterUploadClient puc = new ParameterUploadClient(dataList);
+            PutClient puc = new PutClient(dataList);
             await puc.Upload();
 
             ResultContainer result = puc.GetResults();

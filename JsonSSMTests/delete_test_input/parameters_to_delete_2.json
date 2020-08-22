@@ -1,0 +1,37 @@
+{
+  "META": {
+    "Region": "eu-west-2"
+  },
+  "DATA": {
+    "Some": {
+      "Path1": "1",
+      "Path2": "2",
+      "Path3": "3",
+      "Path4": "4",
+      "Path5": "5",
+      "Path6": "6",
+      "Path7": "7",
+      "Path8": "8",
+      "Path9": "9",
+      "Path10": "10",
+      "Path11": "11",
+      "Path12": "12",
+      "Path13": "13"
+    },
+    "Other": {
+      "Blob1": "1",
+      "Blob2": "2",
+      "Blob3": "3",
+      "Blob4": "4",
+      "Blob5": "5",
+      "Blob6": "6",
+      "Blob7": "7",
+      "Blob8": "8",
+      "Blob9": "9",
+      "Blob10": "10",
+      "Blob11": "11",
+      "Blob12": "12",
+      "Blob13": "13"
+    }
+  }
+}

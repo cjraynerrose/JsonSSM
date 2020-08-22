@@ -3,7 +3,7 @@ using System.Linq;
 
 using Amazon.SimpleSystemsManagement;
 
-namespace JsonSSM.Models.Data
+namespace JsonSSM.Models
 {
     public class DataList
     {

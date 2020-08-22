@@ -3,7 +3,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace JsonSSM.Files
+namespace JsonSSM.Parameters.Put
 {
     public class FileLoader
     {

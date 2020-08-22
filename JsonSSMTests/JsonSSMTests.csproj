@@ -41,6 +41,19 @@
     <None Update="create_test_input\test_meta_data.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Update="delete_test_input\parameters_to_delete_2.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="delete_test_input\parameter_to_delete.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="delete_test_input\parameters_to_delete.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="read_test_input\" />
   </ItemGroup>
 
 </Project>

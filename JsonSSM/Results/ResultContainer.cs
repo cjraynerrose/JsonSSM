@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 
-namespace JsonSSM.Models.Results
+namespace JsonSSM.Results
 {
     public class ResultContainer
     {
-        public UploadResult[] Results { get; }
+        public Result[] Results { get; }
         public ResultType Type { get; }
 
-        public ResultContainer(UploadResult[] results)
+        public ResultContainer(params Result[] results)
         {
             Results = results;
             Type = ResolveType();

@@ -1,7 +1,7 @@
 ﻿using Amazon.SimpleSystemsManagement;
 using Amazon.SimpleSystemsManagement.Model;
 
-namespace JsonSSM.Models.Data
+namespace JsonSSM.Models
 {
     public class DataContainer
     {

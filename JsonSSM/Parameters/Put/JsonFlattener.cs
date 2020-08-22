@@ -4,11 +4,11 @@ using System.Linq;
 
 using Amazon.SimpleSystemsManagement;
 
-using JsonSSM.Models.Data;
+using JsonSSM.Models;
 
 using Newtonsoft.Json.Linq;
 
-namespace JsonSSM.Mappers
+namespace JsonSSM.Parameters.Put
 {
     public class JsonFlattener
     {

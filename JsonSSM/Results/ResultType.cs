@@ -1,4 +1,4 @@
-﻿namespace JsonSSM.Models.Results
+﻿namespace JsonSSM.Results
 {
     public enum ResultType
     {

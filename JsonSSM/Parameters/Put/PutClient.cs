@@ -4,18 +4,18 @@ using System.Threading.Tasks;
 using Amazon.SimpleSystemsManagement;
 using Amazon.SimpleSystemsManagement.Model;
 
-using JsonSSM.Models.Data;
-using JsonSSM.Models.Results;
+using JsonSSM.Models;
+using JsonSSM.Results;
 
-namespace JsonSSM.Clients
+namespace JsonSSM.Parameters.Put
 {
-    public class ParameterUploadClient
+    public class PutClient
     {
         private DataList DataList { get; }
         private ResultContainer UploadResult { get; set; }
         private AmazonSimpleSystemsManagementClient SSMClient { get; set; }
 
-        public ParameterUploadClient(DataList dataList)
+        public PutClient(DataList dataList)
         {
             DataList = dataList;
             SSMClient = new AmazonSimpleSystemsManagementClient(DataList.Meta.Region);
@@ -61,7 +61,7 @@ namespace JsonSSM.Clients
         private void ResolveResultsFromResponses(PutParameterResponse[] responses)
         {
             var results = responses
-                .Select(r => new UploadResult(r))
+                .Select(r => new PutResult(r))
                 .ToArray();
 
             UploadResult = new ResultContainer(results);

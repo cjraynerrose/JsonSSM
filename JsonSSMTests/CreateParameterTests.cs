@@ -4,11 +4,10 @@ using Amazon;
 using Amazon.SimpleSystemsManagement;
 using Amazon.SimpleSystemsManagement.Model;
 using JsonSSM;
-using JsonSSM.Clients;
-using JsonSSM.Files;
-using JsonSSM.Mappers;
-using JsonSSM.Models.Data;
-using JsonSSM.Models.Results;
+using JsonSSM.Models;
+using JsonSSM.Parameters.Delete;
+using JsonSSM.Parameters.Put;
+using JsonSSM.Results;
 using NUnit.Framework;
 
 namespace JsonSSMTests
@@ -23,6 +22,31 @@ namespace JsonSSMTests
         {
             FileLoader = new FileLoader();
             JsonFlattener = new JsonFlattener();
+        }
+
+        [OneTimeTearDown]
+        public async Task TearDown()
+        {
+            var files = new string[]
+            {
+                "create_test_input/test_upload_to_s3.json",
+                "create_test_input/test_upload_service.json",
+                "create_test_input/test_encrypt_meta.json"
+            };
+
+            var deletionClients = files.Select(f =>
+                new DeleteClient(
+                    JsonFlattener.Flatten(
+                        FileLoader.Get(f)
+                        )
+                    )
+                );
+
+
+            foreach (var client in deletionClients)
+            {
+                await client.Delete();
+            }
         }
 
         [TestCase("create_test_input/test_exists.json")]
@@ -105,7 +129,7 @@ namespace JsonSSMTests
         public async Task UploadToS3Test(string path)
         {
             DataList dataList = GetDataFromFile(path);
-            var uploadClient = new ParameterUploadClient(dataList);
+            var uploadClient = new PutClient(dataList);
 
             Assert.IsNull(uploadClient.GetResults());
 

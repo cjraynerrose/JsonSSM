@@ -1,0 +1,13 @@
+{
+  "META": {
+    "Region": "eu-west-2",
+    "Encrypt": [
+      "/some/Path"
+    ]
+  },
+  "DATA": {
+    "Some": {
+      "Path": "passwoRd"
+    }
+  }
+}

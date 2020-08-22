@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Threading.Tasks;
 using NUnit.Framework;
 
 namespace JsonSSMTests
@@ -12,5 +10,10 @@ namespace JsonSSMTests
         {
         }
 
+        public async Task GetParametersFromStore(string prefix)
+        {
+            var getClient = new GetClient(prefix);
+
+        }
     }
 }
