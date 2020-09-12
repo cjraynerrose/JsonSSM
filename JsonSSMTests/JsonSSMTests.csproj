@@ -50,10 +50,9 @@
     <None Update="delete_test_input\parameters_to_delete.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="read_test_input\" />
+    <None Update="read_test_input\seed_for_read_tests.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
